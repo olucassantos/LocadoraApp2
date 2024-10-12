@@ -12,5 +12,11 @@ namespace LocadoraApp2
             FrmNovaMidia frmNovaMidia = new FrmNovaMidia();
             frmNovaMidia.Show();
         }
+
+        private void listaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FrmListaMidias frmListaMidias = new FrmListaMidias();
+            frmListaMidias.Show();
+        }
     }
 }
