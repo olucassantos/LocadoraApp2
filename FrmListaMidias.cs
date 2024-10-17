@@ -66,6 +66,8 @@ namespace LocadoraApp2
 
                 FrmNovaMidia frmNovaMidia = new FrmNovaMidia(MidiaId);
                 frmNovaMidia.ShowDialog();
+
+                CarregaDadosDGV();
             }
         }
     }

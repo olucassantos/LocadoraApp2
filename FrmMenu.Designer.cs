@@ -59,14 +59,14 @@
             // novoToolStripMenuItem
             // 
             novoToolStripMenuItem.Name = "novoToolStripMenuItem";
-            novoToolStripMenuItem.Size = new Size(224, 26);
+            novoToolStripMenuItem.Size = new Size(127, 26);
             novoToolStripMenuItem.Text = "Nova";
             novoToolStripMenuItem.Click += novoToolStripMenuItem_Click;
             // 
             // listaToolStripMenuItem
             // 
             listaToolStripMenuItem.Name = "listaToolStripMenuItem";
-            listaToolStripMenuItem.Size = new Size(224, 26);
+            listaToolStripMenuItem.Size = new Size(127, 26);
             listaToolStripMenuItem.Text = "Lista";
             listaToolStripMenuItem.Click += listaToolStripMenuItem_Click;
             // 
@@ -103,7 +103,7 @@
             Controls.Add(stripMenu);
             MainMenuStrip = stripMenu;
             Name = "FrmMenu";
-            Text = "Form1";
+            Text = "Locadora App";
             stripMenu.ResumeLayout(false);
             stripMenu.PerformLayout();
             ResumeLayout(false);

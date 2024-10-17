@@ -67,6 +67,7 @@ namespace LocadoraApp2
             btnSalvar.Enabled = !status;
 
             btnEditar.Visible = status;
+            btnApagar.Visible = status;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
