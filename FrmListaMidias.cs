@@ -56,14 +56,16 @@ namespace LocadoraApp2
         private void dgvListaMidias_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             // Verificar se clicou em uma linha valida
-            if (e.RowIndex > 0)
+            if (e.RowIndex >= 0)
             {
                 // Pega a linha selecionada pelo usuário
                 DataGridViewRow linha = dgvListaMidias.Rows[e.RowIndex];
 
+                // Pega o campo de ID da linha clicada
                 int MidiaId = (int) linha.Cells["MidiaId"].Value;
 
-                MessageBox.Show($"ID {MidiaId}");
+                FrmNovaMidia frmNovaMidia = new FrmNovaMidia(MidiaId);
+                frmNovaMidia.ShowDialog();
             }
         }
     }

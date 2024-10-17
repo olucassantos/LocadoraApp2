@@ -46,6 +46,8 @@
             btnCancelar = new Button();
             btnSalvar = new Button();
             dateAnoLancamento = new DateTimePicker();
+            btnEditar = new Button();
+            btnApagar = new Button();
             ((System.ComponentModel.ISupportInitialize)numDuracao).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCodigo).BeginInit();
             SuspendLayout();
@@ -195,6 +197,7 @@
             btnCancelar.TabIndex = 9;
             btnCancelar.Text = "Cancelar";
             btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnCancelar_Click;
             // 
             // btnSalvar
             // 
@@ -215,12 +218,36 @@
             dateAnoLancamento.Size = new Size(372, 27);
             dateAnoLancamento.TabIndex = 5;
             // 
+            // btnEditar
+            // 
+            btnEditar.Location = new Point(433, 396);
+            btnEditar.Name = "btnEditar";
+            btnEditar.Size = new Size(108, 42);
+            btnEditar.TabIndex = 8;
+            btnEditar.Text = "Editar";
+            btnEditar.UseVisualStyleBackColor = true;
+            btnEditar.Visible = false;
+            btnEditar.Click += btnEditar_Click;
+            // 
+            // btnApagar
+            // 
+            btnApagar.Location = new Point(319, 396);
+            btnApagar.Name = "btnApagar";
+            btnApagar.Size = new Size(108, 42);
+            btnApagar.TabIndex = 8;
+            btnApagar.Text = "Apagar";
+            btnApagar.UseVisualStyleBackColor = true;
+            btnApagar.Visible = false;
+            btnApagar.Click += btnApagar_Click;
+            // 
             // FrmNovaMidia
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 450);
             Controls.Add(dateAnoLancamento);
+            Controls.Add(btnApagar);
+            Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
             Controls.Add(btnCancelar);
             Controls.Add(numCodigo);
@@ -265,5 +292,7 @@
         private Button btnCancelar;
         private Button btnSalvar;
         private DateTimePicker dateAnoLancamento;
+        private Button btnEditar;
+        private Button btnApagar;
     }
 }
