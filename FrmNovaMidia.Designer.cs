@@ -266,6 +266,7 @@
             Controls.Add(label3);
             Controls.Add(label4);
             Name = "FrmNovaMidia";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Nova Midia";
             ((System.ComponentModel.ISupportInitialize)numDuracao).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCodigo).EndInit();

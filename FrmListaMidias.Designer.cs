@@ -51,6 +51,7 @@
             ClientSize = new Size(800, 450);
             Controls.Add(dgvListaMidias);
             Name = "FrmListaMidias";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Lista de Midias";
             Load += FrmListaMidias_Load;
             ((System.ComponentModel.ISupportInitialize)dgvListaMidias).EndInit();

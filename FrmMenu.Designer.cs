@@ -103,6 +103,7 @@
             Controls.Add(stripMenu);
             MainMenuStrip = stripMenu;
             Name = "FrmMenu";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Locadora App";
             stripMenu.ResumeLayout(false);
             stripMenu.PerformLayout();
