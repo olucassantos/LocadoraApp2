@@ -187,7 +187,35 @@ namespace LocadoraApp2
 
         private void btnApagar_Click(object sender, EventArgs e)
         {
+            var res = MessageBox.Show(
+                $"Deseja realmente apagar a midia {MidiaAtual.Titulo}?",
+                "Confirmação de deleção",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question,
+                MessageBoxDefaultButton.Button2
+            );
 
+            if (res == DialogResult.Yes)
+            {
+                // Apaga a Midia do banco de dadoss
+
+                using (var contexto = new LocadoraAppDbContext())
+                {
+                    MidiaAtual = contexto.Midias.Find(MidiaAtual.MidiaId);
+
+                    if (MidiaAtual != null)
+                    {
+                        contexto.Midias.Remove(MidiaAtual);
+                        int resultado = contexto.SaveChanges();
+
+                        if (resultado > 0)
+                        {
+                            MessageBox.Show("Midia removida com sucesso!");
+                            this.Close();
+                        }
+                    }
+                }
+            }
         }
     }
 }
