@@ -45,11 +45,12 @@
             label8 = new Label();
             btnCancelar = new Button();
             btnSalvar = new Button();
-            dateAnoLancamento = new DateTimePicker();
             btnEditar = new Button();
             btnApagar = new Button();
+            numAnoLancamento = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)numDuracao).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numCodigo).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)numAnoLancamento).BeginInit();
             SuspendLayout();
             // 
             // txtTitulo
@@ -172,6 +173,7 @@
             // 
             // numCodigo
             // 
+            numCodigo.Enabled = false;
             numCodigo.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
             numCodigo.Location = new Point(12, 38);
             numCodigo.Name = "numCodigo";
@@ -209,15 +211,6 @@
             btnSalvar.UseVisualStyleBackColor = true;
             btnSalvar.Click += btnSalvar_Click;
             // 
-            // dateAnoLancamento
-            // 
-            dateAnoLancamento.CustomFormat = "yyyy";
-            dateAnoLancamento.Format = DateTimePickerFormat.Custom;
-            dateAnoLancamento.Location = new Point(12, 198);
-            dateAnoLancamento.Name = "dateAnoLancamento";
-            dateAnoLancamento.Size = new Size(372, 27);
-            dateAnoLancamento.TabIndex = 5;
-            // 
             // btnEditar
             // 
             btnEditar.Location = new Point(433, 396);
@@ -240,12 +233,21 @@
             btnApagar.Visible = false;
             btnApagar.Click += btnApagar_Click;
             // 
+            // numAnoLancamento
+            // 
+            numAnoLancamento.Font = new Font("Arial", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            numAnoLancamento.Location = new Point(12, 198);
+            numAnoLancamento.Maximum = new decimal(new int[] { 9999, 0, 0, 0 });
+            numAnoLancamento.Name = "numAnoLancamento";
+            numAnoLancamento.Size = new Size(372, 27);
+            numAnoLancamento.TabIndex = 6;
+            numAnoLancamento.TextAlign = HorizontalAlignment.Center;
+            // 
             // FrmNovaMidia
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(778, 450);
-            Controls.Add(dateAnoLancamento);
             Controls.Add(btnApagar);
             Controls.Add(btnEditar);
             Controls.Add(btnSalvar);
@@ -254,6 +256,7 @@
             Controls.Add(txtSinopse);
             Controls.Add(label1);
             Controls.Add(label7);
+            Controls.Add(numAnoLancamento);
             Controls.Add(numDuracao);
             Controls.Add(label6);
             Controls.Add(cmbClassificacao);
@@ -270,6 +273,7 @@
             Text = "Nova Midia";
             ((System.ComponentModel.ISupportInitialize)numDuracao).EndInit();
             ((System.ComponentModel.ISupportInitialize)numCodigo).EndInit();
+            ((System.ComponentModel.ISupportInitialize)numAnoLancamento).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -292,8 +296,8 @@
         private Label label8;
         private Button btnCancelar;
         private Button btnSalvar;
-        private DateTimePicker dateAnoLancamento;
         private Button btnEditar;
         private Button btnApagar;
+        private NumericUpDown numAnoLancamento;
     }
 }
