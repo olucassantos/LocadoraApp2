@@ -80,13 +80,14 @@
             // novoToolStripMenuItem1
             // 
             novoToolStripMenuItem1.Name = "novoToolStripMenuItem1";
-            novoToolStripMenuItem1.Size = new Size(127, 26);
+            novoToolStripMenuItem1.Size = new Size(224, 26);
             novoToolStripMenuItem1.Text = "Nova";
+            novoToolStripMenuItem1.Click += novoToolStripMenuItem1_Click;
             // 
             // listaToolStripMenuItem1
             // 
             listaToolStripMenuItem1.Name = "listaToolStripMenuItem1";
-            listaToolStripMenuItem1.Size = new Size(127, 26);
+            listaToolStripMenuItem1.Size = new Size(224, 26);
             listaToolStripMenuItem1.Text = "Lista";
             // 
             // sairToolStripMenuItem

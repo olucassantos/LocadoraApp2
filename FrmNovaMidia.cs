@@ -85,7 +85,7 @@ namespace LocadoraApp2
                 {
                     MidiaAtual = contexto.Midias.Find(MidiaAtual.MidiaId);
 
-                    // Atribui os campos corretos a edição
+                    // Atribui os campos corretos a ediçãoz
                     MidiaAtual.Titulo = txtTitulo.Text;
                     MidiaAtual.Sinopse = txtSinopse.Text;
                     MidiaAtual.Autor = txtAutor.Text;

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LocadoraApp2.Classes
 {
-    internal class Item
+    public class Item
     {
         public int ItemId { get; set; }
         public int PrazoDevolucao { get; set; }
