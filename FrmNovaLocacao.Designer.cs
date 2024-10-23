@@ -44,16 +44,21 @@
             label5 = new Label();
             cmbMidias = new Componentes.MidiasComboBox();
             label4 = new Label();
+            dgvItensLocacao = new DataGridView();
+            btnFechar = new Button();
+            btnCancelar = new Button();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numPrazo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numValorItem).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgvItensLocacao).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
             // 
             groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            groupBox1.BackColor = Color.Lavender;
             groupBox1.Controls.Add(mtxtTelefone);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(mtxtCpf);
@@ -152,6 +157,7 @@
             btnAdicionar.TabIndex = 3;
             btnAdicionar.Text = "Adicionar";
             btnAdicionar.UseVisualStyleBackColor = true;
+            btnAdicionar.Click += btnAdicionar_Click;
             // 
             // numPrazo
             // 
@@ -220,15 +226,52 @@
             label4.TabIndex = 2;
             label4.Text = "Valor";
             // 
+            // dgvItensLocacao
+            // 
+            dgvItensLocacao.BackgroundColor = Color.DarkSlateBlue;
+            dgvItensLocacao.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvItensLocacao.Location = new Point(12, 357);
+            dgvItensLocacao.Name = "dgvItensLocacao";
+            dgvItensLocacao.RowHeadersWidth = 51;
+            dgvItensLocacao.RowTemplate.Height = 29;
+            dgvItensLocacao.Size = new Size(946, 203);
+            dgvItensLocacao.TabIndex = 2;
+            // 
+            // btnFechar
+            // 
+            btnFechar.ForeColor = Color.Black;
+            btnFechar.Location = new Point(797, 566);
+            btnFechar.Name = "btnFechar";
+            btnFechar.Size = new Size(161, 40);
+            btnFechar.TabIndex = 3;
+            btnFechar.Text = "Fechar Locação";
+            btnFechar.UseVisualStyleBackColor = true;
+            btnFechar.Click += btnAdicionar_Click;
+            // 
+            // btnCancelar
+            // 
+            btnCancelar.ForeColor = Color.Black;
+            btnCancelar.Location = new Point(630, 566);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(161, 40);
+            btnCancelar.TabIndex = 3;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
+            btnCancelar.Click += btnAdicionar_Click;
+            // 
             // FrmNovaLocacao
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 613);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnFechar);
+            Controls.Add(dgvItensLocacao);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "FrmNovaLocacao";
             Text = "Nova Locação";
+            Load += FrmNovaLocacao_Load_1;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -236,6 +279,7 @@
             ((System.ComponentModel.ISupportInitialize)numPrazo).EndInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).EndInit();
             ((System.ComponentModel.ISupportInitialize)numValorItem).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgvItensLocacao).EndInit();
             ResumeLayout(false);
         }
 
@@ -257,5 +301,8 @@
         private NumericUpDown numPrazo;
         private NumericUpDown numQuantidade;
         private Label label7;
+        private DataGridView dgvItensLocacao;
+        private Button btnFechar;
+        private Button btnCancelar;
     }
 }
