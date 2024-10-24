@@ -232,8 +232,10 @@
             dgvItensLocacao.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvItensLocacao.Location = new Point(12, 357);
             dgvItensLocacao.Name = "dgvItensLocacao";
+            dgvItensLocacao.ReadOnly = true;
             dgvItensLocacao.RowHeadersWidth = 51;
             dgvItensLocacao.RowTemplate.Height = 29;
+            dgvItensLocacao.ShowEditingIcon = false;
             dgvItensLocacao.Size = new Size(946, 203);
             dgvItensLocacao.TabIndex = 2;
             // 
@@ -246,7 +248,7 @@
             btnFechar.TabIndex = 3;
             btnFechar.Text = "Fechar Locação";
             btnFechar.UseVisualStyleBackColor = true;
-            btnFechar.Click += btnAdicionar_Click;
+            btnFechar.Click += btnFechar_Click;
             // 
             // btnCancelar
             // 

@@ -22,9 +22,27 @@ namespace LocadoraApp2.Classes
         public int MidiaId { get; set; }
         public Midia Midia { get; set; }
 
+        // Campo para Valor Total
+        public decimal ValorTotal
+        {
+            get
+            {
+                return Quantidade * Valor;
+            }
+        }
+
+        // Campo para o titulo da Midia
+        public string MidiaTitulo
+        {
+            get
+            {
+                return Midia.Titulo;
+            }
+        }
+
         public Item() 
         {
-        
+            Midia = new Midia();   
         }
     }
 }
