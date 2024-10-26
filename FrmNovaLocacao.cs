@@ -37,6 +37,7 @@ namespace LocadoraApp2
                 Quantidade = (int)numQuantidade.Value,
                 Status = "Pendente",
                 MidiaId = cmbMidias.MidiaSelecionada.MidiaId,
+                Midia = cmbMidias.MidiaSelecionada
             };
 
             // Adiciona o novo item dentro da locação
@@ -147,16 +148,58 @@ namespace LocadoraApp2
                 return;
             }
 
+            // Adiciona os dados da locação
             LocacaoAtual.Cpf = mtxtCpf.Text;
             LocacaoAtual.Nome = txtNomeCliente.Text;
             LocacaoAtual.Telefone = mtxtTelefone.Text;
             LocacaoAtual.Status = "Fechado";
+            LocacaoAtual.Data = DateTime.Now;
 
+            // Abre o contexto para salvar a locação
             using (var contexto = new LocadoraAppDbContext())
             {
+                // Adiciona todas as midias ao contexto para não serem inseridas novamente
+                foreach (var item in LocacaoAtual.Itens)
+                {
+                    contexto.Midias.Attach(item.Midia);
+                    LocacaoAtual.ValorTotal += item.ValorTotal; // Soma o valor total do item na locação
+                }
+
                 contexto.Locacoes.Add(LocacaoAtual);
-                contexto.SaveChanges();
+                int resultado = contexto.SaveChanges();
+
+                if (resultado > 0)
+                {
+                    var opcao = MessageBox.Show(
+                        "Locação criada com sucesso! Deseja criar outra?",
+                        "Locação criada",
+                        MessageBoxButtons.YesNo,
+                        MessageBoxIcon.Information,
+                        MessageBoxDefaultButton.Button1
+                    );
+
+                    if (opcao == DialogResult.Yes)
+                    {
+                        // Limpa o formulário
+                        LimparFormularioLocacao();
+                    }
+                    else
+                    {
+                        // Fecha o formulário
+                        this.Close();
+                    }
+                }
             }
+        }
+
+        private void LimparFormularioLocacao()
+        {
+            txtNomeCliente.Clear();
+            mtxtCpf.Clear();
+            mtxtTelefone.Clear();
+            LocacaoAtual = new Locacao();
+
+            CarregaDadosItensLocacao();
         }
 
         private bool ValidaDadosLocacao()

@@ -89,6 +89,7 @@
             listaToolStripMenuItem1.Name = "listaToolStripMenuItem1";
             listaToolStripMenuItem1.Size = new Size(224, 26);
             listaToolStripMenuItem1.Text = "Lista";
+            listaToolStripMenuItem1.Click += listaToolStripMenuItem1_Click;
             // 
             // sairToolStripMenuItem
             // 
