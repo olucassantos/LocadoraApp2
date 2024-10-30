@@ -27,7 +27,7 @@ namespace LocadoraApp2.Classes
         {
             get
             {
-                return Quantidade * Valor;
+                return Quantidade * Valor * PrazoDevolucao;
             }
         }
 
@@ -37,6 +37,19 @@ namespace LocadoraApp2.Classes
             get
             {
                 return Midia.Titulo;
+            }
+        }
+
+        public DateTime DataDevolucao
+        {
+            get {
+                if (Locacao != null) {
+                    return Locacao.Data.AddDays(PrazoDevolucao);
+                } 
+                else
+                {
+                    return DateTime.Now.AddDays(PrazoDevolucao);
+                }
             }
         }
 
