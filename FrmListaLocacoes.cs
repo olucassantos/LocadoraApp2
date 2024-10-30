@@ -43,7 +43,7 @@ namespace LocadoraApp2
             dgvListaLocacoes.Columns["Data"].HeaderText = "Data Locação";
             dgvListaLocacoes.Columns["ValorTotal"].HeaderText = "Valor Total";
 
-            // Muda os dados de ValorTotal
+            // Muda a formatação do campo valor total para notação Dinheiro (Currency [C])
             dgvListaLocacoes.Columns["ValorTotal"].DefaultCellStyle.Format = "C";
 
             // Ocultar os campos desnecessários
@@ -52,6 +52,22 @@ namespace LocadoraApp2
 
             // Muda o redimensionamento do DGV
             dgvListaLocacoes.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+        }
+
+        private void dgvListaLocacoes_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Verifica se tem uma linha selecionada
+            {
+                // Pega toda a linha que estava selecionada
+                DataGridViewRow linha = dgvListaLocacoes.Rows[e.RowIndex];
+
+                // Capturando o ID da linha selecionada
+                int LocacaoId = (int) linha.Cells["LocacaoId"].Value;
+
+                // Abre o formulário de visualização da locação
+                FrmNovaLocacao frmNovaLocacao = new FrmNovaLocacao(LocacaoId);
+                frmNovaLocacao.ShowDialog();
+            }
         }
     }
 }

@@ -35,7 +35,7 @@
             label1 = new Label();
             txtNomeCliente = new TextBox();
             label3 = new Label();
-            groupBox2 = new GroupBox();
+            grbNovoItem = new GroupBox();
             btnAdicionar = new Button();
             numPrazo = new NumericUpDown();
             numQuantidade = new NumericUpDown();
@@ -48,7 +48,7 @@
             btnFechar = new Button();
             btnCancelar = new Button();
             groupBox1.SuspendLayout();
-            groupBox2.SuspendLayout();
+            grbNovoItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numPrazo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numValorItem).BeginInit();
@@ -129,24 +129,24 @@
             label3.TabIndex = 2;
             label3.Text = "Nome";
             // 
-            // groupBox2
+            // grbNovoItem
             // 
-            groupBox2.BackColor = Color.MediumSlateBlue;
-            groupBox2.Controls.Add(btnAdicionar);
-            groupBox2.Controls.Add(numPrazo);
-            groupBox2.Controls.Add(numQuantidade);
-            groupBox2.Controls.Add(label7);
-            groupBox2.Controls.Add(numValorItem);
-            groupBox2.Controls.Add(label5);
-            groupBox2.Controls.Add(cmbMidias);
-            groupBox2.Controls.Add(label4);
-            groupBox2.ForeColor = Color.White;
-            groupBox2.Location = new Point(12, 159);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(946, 192);
-            groupBox2.TabIndex = 1;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "Itens da Locação";
+            grbNovoItem.BackColor = Color.MediumSlateBlue;
+            grbNovoItem.Controls.Add(btnAdicionar);
+            grbNovoItem.Controls.Add(numPrazo);
+            grbNovoItem.Controls.Add(numQuantidade);
+            grbNovoItem.Controls.Add(label7);
+            grbNovoItem.Controls.Add(numValorItem);
+            grbNovoItem.Controls.Add(label5);
+            grbNovoItem.Controls.Add(cmbMidias);
+            grbNovoItem.Controls.Add(label4);
+            grbNovoItem.ForeColor = Color.White;
+            grbNovoItem.Location = new Point(12, 159);
+            grbNovoItem.Name = "grbNovoItem";
+            grbNovoItem.Size = new Size(946, 192);
+            grbNovoItem.TabIndex = 1;
+            grbNovoItem.TabStop = false;
+            grbNovoItem.Text = "Itens da Locação";
             // 
             // btnAdicionar
             // 
@@ -269,15 +269,15 @@
             Controls.Add(btnCancelar);
             Controls.Add(btnFechar);
             Controls.Add(dgvItensLocacao);
-            Controls.Add(groupBox2);
+            Controls.Add(grbNovoItem);
             Controls.Add(groupBox1);
             Name = "FrmNovaLocacao";
             Text = "Nova Locação";
             Load += FrmNovaLocacao_Load_1;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
-            groupBox2.ResumeLayout(false);
-            groupBox2.PerformLayout();
+            grbNovoItem.ResumeLayout(false);
+            grbNovoItem.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numPrazo).EndInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).EndInit();
             ((System.ComponentModel.ISupportInitialize)numValorItem).EndInit();
@@ -294,7 +294,7 @@
         private Label label3;
         private MaskedTextBox mtxtTelefone;
         private Label label2;
-        private GroupBox groupBox2;
+        private GroupBox grbNovoItem;
         private Componentes.MidiasComboBox cmbMidias;
         private NumericUpDown numValorItem;
         private Label label5;

@@ -22,6 +22,60 @@ namespace LocadoraApp2
             InitializeComponent();
         }
 
+        public FrmNovaLocacao(int LocacaoId)
+        {
+            InitializeComponent();
+
+            // Coloca os campos em apenas leitura
+            CamposApenasLeitura(true);
+
+            // Busca a Locação no banco de dados
+            LocacaoAtual = GetLocacaoById(LocacaoId);
+
+            // Carrega os dados para os campos
+            CarregaDadosLocacaoCampos();
+        }
+
+        private void CarregaDadosLocacaoCampos()
+        {
+            txtNomeCliente.Text = LocacaoAtual.Nome;
+            mtxtCpf.Text = LocacaoAtual.Cpf;
+            mtxtTelefone.Text = LocacaoAtual.Telefone;
+
+            CarregaDadosItensLocacao();
+        }
+
+        private Locacao? GetLocacaoById(int id)
+        {
+            using (var contexto = new LocadoraAppDbContext())
+            {
+                return contexto
+                        .Locacoes
+                        .Include(l => l.Itens)
+                            .ThenInclude(i => i.Midia)
+                        .FirstOrDefault(l => l.LocacaoId == id);
+            }
+        }
+
+        private void CamposApenasLeitura(bool status)
+        {
+            // Marca a propriedade ReadOnly como true nos campos de texto
+            txtNomeCliente.ReadOnly = status;
+            mtxtCpf.ReadOnly = status;
+            mtxtTelefone.ReadOnly = status;
+
+            // Oculta o formulário de novos itens
+            grbNovoItem.Visible = !status;
+
+            // Oculta o botão de cancelar
+            btnCancelar.Visible = !status;
+            // Oculta o botão de fechar locação
+            btnFechar.Visible = !status;
+
+            // Desabilita o DataGridView dos itens
+            dgvItensLocacao.ReadOnly = status;
+        }
+
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             if (!ValidaDadosItem())
@@ -100,13 +154,16 @@ namespace LocadoraApp2
 
         private void FrmNovaLocacao_Load_1(object sender, EventArgs e)
         {
-            // Carrega as midias no ComboBox Personalizado
-            cmbMidias.CarregarMidias();
+            if (LocacaoAtual == null)
+            {
+                // Carrega as midias no ComboBox Personalizado
+                cmbMidias.CarregarMidias();
 
-            // Instancia uma nova locação
-            LocacaoAtual = new Locacao();
+                // Instancia uma nova locação
+                LocacaoAtual = new Locacao();
 
-            CarregaDadosItensLocacao();
+                CarregaDadosItensLocacao();
+            }
         }
 
         private void CarregaDadosItensLocacao()
@@ -117,18 +174,26 @@ namespace LocadoraApp2
             // Define os titulos das colunas
             dgvItensLocacao.Columns["ItemId"].HeaderText = "Código";
             dgvItensLocacao.Columns["MidiaTitulo"].HeaderText = "Título";
-            dgvItensLocacao.Columns["PrazoDevolucao"].HeaderText = "Devolução";
+
+            dgvItensLocacao.Columns["PrazoDevolucao"].HeaderText = "Prazo";
+            dgvItensLocacao.Columns["DataDevolucao"].HeaderText = "Data Devolução";
+
             dgvItensLocacao.Columns["Valor"].HeaderText = "Valor";
             dgvItensLocacao.Columns["Quantidade"].HeaderText = "Quantidade";
             dgvItensLocacao.Columns["ValorTotal"].HeaderText = "Total";
+
+            // Formata os campos de valor para Moeda
+            dgvItensLocacao.Columns["Valor"].DefaultCellStyle.Format = "C";
+            dgvItensLocacao.Columns["ValorTotal"].DefaultCellStyle.Format = "C";
 
             // Ordena os campos
             dgvItensLocacao.Columns["ItemId"].DisplayIndex = 0;
             dgvItensLocacao.Columns["MidiaTitulo"].DisplayIndex = 1;
             dgvItensLocacao.Columns["PrazoDevolucao"].DisplayIndex = 2;
-            dgvItensLocacao.Columns["Valor"].DisplayIndex = 3;
-            dgvItensLocacao.Columns["Quantidade"].DisplayIndex = 4;
-            dgvItensLocacao.Columns["ValorTotal"].DisplayIndex = 5;
+            dgvItensLocacao.Columns["DataDevolucao"].DisplayIndex = 3;
+            dgvItensLocacao.Columns["Valor"].DisplayIndex = 4;
+            dgvItensLocacao.Columns["Quantidade"].DisplayIndex = 5;
+            dgvItensLocacao.Columns["ValorTotal"].DisplayIndex = 6;
 
             // Oculta os campos desnecessários
             dgvItensLocacao.Columns["MidiaId"].Visible = false;

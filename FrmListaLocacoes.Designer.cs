@@ -38,10 +38,12 @@
             dgvListaLocacoes.Dock = DockStyle.Fill;
             dgvListaLocacoes.Location = new Point(0, 0);
             dgvListaLocacoes.Name = "dgvListaLocacoes";
+            dgvListaLocacoes.ReadOnly = true;
             dgvListaLocacoes.RowHeadersWidth = 51;
             dgvListaLocacoes.RowTemplate.Height = 29;
             dgvListaLocacoes.Size = new Size(800, 450);
             dgvListaLocacoes.TabIndex = 1;
+            dgvListaLocacoes.CellContentDoubleClick += dgvListaLocacoes_CellContentDoubleClick;
             // 
             // FrmListaLocacoes
             // 
