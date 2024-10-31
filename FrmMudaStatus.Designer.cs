@@ -35,10 +35,11 @@
             label3 = new Label();
             datePrazoDevolucao = new DateTimePicker();
             groupBox1 = new GroupBox();
-            label4 = new Label();
+            btnCancelar = new Button();
+            btnSalvar = new Button();
             cmbNovoStatus = new ComboBox();
-            button1 = new Button();
-            button2 = new Button();
+            label4 = new Label();
+            pnlPrazoDevolucao = new Panel();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -97,8 +98,8 @@
             // groupBox1
             // 
             groupBox1.BackColor = Color.SlateBlue;
-            groupBox1.Controls.Add(button2);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(btnCancelar);
+            groupBox1.Controls.Add(btnSalvar);
             groupBox1.Controls.Add(cmbNovoStatus);
             groupBox1.Controls.Add(label4);
             groupBox1.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
@@ -110,14 +111,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Alteração de status";
             // 
-            // label4
+            // btnCancelar
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(6, 35);
-            label4.Name = "label4";
-            label4.Size = new Size(429, 23);
-            label4.TabIndex = 0;
-            label4.Text = "Selecione abaixo o novo status para o item da locação.";
+            btnCancelar.BackColor = Color.Crimson;
+            btnCancelar.DialogResult = DialogResult.Cancel;
+            btnCancelar.Location = new Point(6, 179);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(134, 45);
+            btnCancelar.TabIndex = 2;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = false;
+            // 
+            // btnSalvar
+            // 
+            btnSalvar.BackColor = Color.SeaGreen;
+            btnSalvar.Location = new Point(397, 179);
+            btnSalvar.Name = "btnSalvar";
+            btnSalvar.Size = new Size(134, 45);
+            btnSalvar.TabIndex = 2;
+            btnSalvar.Text = "Salvar";
+            btnSalvar.UseVisualStyleBackColor = false;
+            btnSalvar.Click += btnSalvar_Click;
             // 
             // cmbNovoStatus
             // 
@@ -128,26 +142,21 @@
             cmbNovoStatus.Size = new Size(525, 31);
             cmbNovoStatus.TabIndex = 1;
             // 
-            // button1
+            // label4
             // 
-            button1.BackColor = Color.SeaGreen;
-            button1.Location = new Point(397, 179);
-            button1.Name = "button1";
-            button1.Size = new Size(134, 45);
-            button1.TabIndex = 2;
-            button1.Text = "Salvar";
-            button1.UseVisualStyleBackColor = false;
+            label4.AutoSize = true;
+            label4.Location = new Point(6, 35);
+            label4.Name = "label4";
+            label4.Size = new Size(429, 23);
+            label4.TabIndex = 0;
+            label4.Text = "Selecione abaixo o novo status para o item da locação.";
             // 
-            // button2
+            // pnlPrazoDevolucao
             // 
-            button2.BackColor = Color.Crimson;
-            button2.DialogResult = DialogResult.Cancel;
-            button2.Location = new Point(6, 179);
-            button2.Name = "button2";
-            button2.Size = new Size(134, 45);
-            button2.TabIndex = 2;
-            button2.Text = "Cancelar";
-            button2.UseVisualStyleBackColor = false;
+            pnlPrazoDevolucao.Location = new Point(285, 100);
+            pnlPrazoDevolucao.Name = "pnlPrazoDevolucao";
+            pnlPrazoDevolucao.Size = new Size(266, 31);
+            pnlPrazoDevolucao.TabIndex = 6;
             // 
             // FrmMudaStatus
             // 
@@ -161,6 +170,7 @@
             Controls.Add(label2);
             Controls.Add(txtMidia);
             Controls.Add(label1);
+            Controls.Add(pnlPrazoDevolucao);
             Name = "FrmMudaStatus";
             StartPosition = FormStartPosition.CenterParent;
             Text = "Mudar o status do item";
@@ -181,7 +191,8 @@
         private GroupBox groupBox1;
         private Label label4;
         private ComboBox cmbNovoStatus;
-        private Button button2;
-        private Button button1;
+        private Button btnCancelar;
+        private Button btnSalvar;
+        private Panel pnlPrazoDevolucao;
     }
 }

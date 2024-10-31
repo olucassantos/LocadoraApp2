@@ -320,6 +320,7 @@ namespace LocadoraApp2
                     var Item = contexto
                                 .Itens
                                 .Include(i => i.Midia)
+                                .Include(i => i.Locacao)
                                 .FirstOrDefault(i => i.ItemId == ItemId);
 
                     if (Item != null)

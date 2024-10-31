@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using LocadoraApp2.Classes;
+using LocadoraApp2.Contexto;
 
 namespace LocadoraApp2
 {
@@ -18,6 +19,48 @@ namespace LocadoraApp2
         {
             InitializeComponent();
             ItemAtual = item;
+            CarregaDadosCampos();
+        }
+
+        private void CarregaDadosCampos()
+        {
+            txtMidia.Text = ItemAtual.Midia.Titulo;
+            txtStatusAtual.Text = ItemAtual.Status;
+            datePrazoDevolucao.Value = ItemAtual.DataDevolucao;
+
+            // Muda o panel de acordo com o prazo de devoluçaõ
+            if (ItemAtual.DataDevolucao < DateTime.Now)
+            {
+                pnlPrazoDevolucao.BackColor = Color.Red;
+            }
+            else
+            {
+                pnlPrazoDevolucao.BackColor = Color.Green;
+            }
+        }
+
+        private void btnSalvar_Click(object sender, EventArgs e)
+        {
+            // Valida se selecionou um campo no combo box
+            if (cmbNovoStatus.SelectedIndex < 0) {
+                MessageBox.Show("Selecione um novo status!");
+                return;
+            }
+
+            using (var contexto = new LocadoraAppDbContext())
+            {
+                var ItemAlteracao = contexto.Itens.Find(ItemAtual.ItemId);
+
+                ItemAlteracao.Status = cmbNovoStatus.SelectedItem.ToString();
+
+                int res = contexto.SaveChanges();
+
+                if (res > 0)
+                {
+                    MessageBox.Show("Status alterado com sucesso!");
+                    this.Close();
+                }
+            }
         }
     }
 }
