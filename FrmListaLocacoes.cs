@@ -26,9 +26,13 @@ namespace LocadoraApp2
 
         private List<Locacao> GetLocacoes()
         {
+            string StatusFiltro = cmbStatus.Text;
+
             using (var contexto = new LocadoraAppDbContext())
             {
-                return contexto.Locacoes.ToList();
+                return contexto.Locacoes
+                    .Where(l => l.Status == StatusFiltro) // Filtra pelos status selecionados
+                    .ToList();
             }
         }
 
@@ -62,12 +66,19 @@ namespace LocadoraApp2
                 DataGridViewRow linha = dgvListaLocacoes.Rows[e.RowIndex];
 
                 // Capturando o ID da linha selecionada
-                int LocacaoId = (int) linha.Cells["LocacaoId"].Value;
+                int LocacaoId = (int)linha.Cells["LocacaoId"].Value;
 
                 // Abre o formulário de visualização da locação
                 FrmNovaLocacao frmNovaLocacao = new FrmNovaLocacao(LocacaoId);
                 frmNovaLocacao.ShowDialog();
+
+                CarregaDadosDGV();
             }
+        }
+
+        private void cmbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CarregaDadosDGV();
         }
     }
 }

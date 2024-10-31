@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LocadoraApp2.Classes;
 using LocadoraApp2.Contexto;
+using Microsoft.EntityFrameworkCore;
 
 namespace LocadoraApp2
 {
@@ -54,6 +55,19 @@ namespace LocadoraApp2
                 ItemAlteracao.Status = cmbNovoStatus.SelectedItem.ToString();
 
                 int res = contexto.SaveChanges();
+
+                // Verifica se existe algum item que ainda não foi devolvido
+                // Caso não tenha, marca a locação como concluida
+
+                var LocacaoItem = contexto.Locacoes
+                        .Include(l => l.Itens)
+                        .FirstOrDefault(l => l.LocacaoId == ItemAlteracao.LocacaoId);
+
+                if (LocacaoItem.Itens.All(i => i.Status == "Devolvido"))
+                {
+                    LocacaoItem.Status = "Concluido";
+                    contexto.SaveChanges();
+                }
 
                 if (res > 0)
                 {
