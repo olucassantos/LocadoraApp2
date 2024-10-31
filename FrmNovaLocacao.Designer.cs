@@ -47,12 +47,21 @@
             dgvItensLocacao = new DataGridView();
             btnFechar = new Button();
             btnCancelar = new Button();
+            grbDadosLocacao = new GroupBox();
+            numValorTotal = new NumericUpDown();
+            label9 = new Label();
+            txtStatus = new TextBox();
+            label8 = new Label();
+            dateDataLocacao = new DateTimePicker();
+            label6 = new Label();
             groupBox1.SuspendLayout();
             grbNovoItem.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numPrazo).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numQuantidade).BeginInit();
             ((System.ComponentModel.ISupportInitialize)numValorItem).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvItensLocacao).BeginInit();
+            grbDadosLocacao.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numValorTotal).BeginInit();
             SuspendLayout();
             // 
             // groupBox1
@@ -238,6 +247,7 @@
             dgvItensLocacao.ShowEditingIcon = false;
             dgvItensLocacao.Size = new Size(946, 203);
             dgvItensLocacao.TabIndex = 2;
+            dgvItensLocacao.CellDoubleClick += dgvItensLocacao_CellDoubleClick;
             // 
             // btnFechar
             // 
@@ -261,11 +271,90 @@
             btnCancelar.UseVisualStyleBackColor = true;
             btnCancelar.Click += btnAdicionar_Click;
             // 
+            // grbDadosLocacao
+            // 
+            grbDadosLocacao.BackColor = Color.BlueViolet;
+            grbDadosLocacao.Controls.Add(numValorTotal);
+            grbDadosLocacao.Controls.Add(label9);
+            grbDadosLocacao.Controls.Add(txtStatus);
+            grbDadosLocacao.Controls.Add(label8);
+            grbDadosLocacao.Controls.Add(dateDataLocacao);
+            grbDadosLocacao.Controls.Add(label6);
+            grbDadosLocacao.ForeColor = Color.White;
+            grbDadosLocacao.Location = new Point(12, 159);
+            grbDadosLocacao.Name = "grbDadosLocacao";
+            grbDadosLocacao.Size = new Size(946, 192);
+            grbDadosLocacao.TabIndex = 4;
+            grbDadosLocacao.TabStop = false;
+            grbDadosLocacao.Text = "Dados da Locação";
+            grbDadosLocacao.Visible = false;
+            // 
+            // numValorTotal
+            // 
+            numValorTotal.DecimalPlaces = 2;
+            numValorTotal.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            numValorTotal.Location = new Point(474, 123);
+            numValorTotal.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
+            numValorTotal.Name = "numValorTotal";
+            numValorTotal.ReadOnly = true;
+            numValorTotal.Size = new Size(466, 34);
+            numValorTotal.TabIndex = 5;
+            numValorTotal.TextAlign = HorizontalAlignment.Right;
+            numValorTotal.ThousandsSeparator = true;
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(474, 100);
+            label9.Name = "label9";
+            label9.Size = new Size(80, 20);
+            label9.TabIndex = 4;
+            label9.Text = "Valor Total";
+            // 
+            // txtStatus
+            // 
+            txtStatus.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            txtStatus.Location = new Point(474, 57);
+            txtStatus.Name = "txtStatus";
+            txtStatus.ReadOnly = true;
+            txtStatus.Size = new Size(466, 34);
+            txtStatus.TabIndex = 3;
+            txtStatus.TextAlign = HorizontalAlignment.Center;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new Point(474, 29);
+            label8.Name = "label8";
+            label8.Size = new Size(49, 20);
+            label8.TabIndex = 2;
+            label8.Text = "Status";
+            // 
+            // dateDataLocacao
+            // 
+            dateDataLocacao.Enabled = false;
+            dateDataLocacao.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            dateDataLocacao.Format = DateTimePickerFormat.Short;
+            dateDataLocacao.Location = new Point(6, 57);
+            dateDataLocacao.Name = "dateDataLocacao";
+            dateDataLocacao.Size = new Size(462, 34);
+            dateDataLocacao.TabIndex = 1;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(6, 34);
+            label6.Name = "label6";
+            label6.Size = new Size(121, 20);
+            label6.TabIndex = 0;
+            label6.Text = "Data da Locação";
+            // 
             // FrmNovaLocacao
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(970, 613);
+            Controls.Add(grbDadosLocacao);
             Controls.Add(btnCancelar);
             Controls.Add(btnFechar);
             Controls.Add(dgvItensLocacao);
@@ -282,6 +371,9 @@
             ((System.ComponentModel.ISupportInitialize)numQuantidade).EndInit();
             ((System.ComponentModel.ISupportInitialize)numValorItem).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgvItensLocacao).EndInit();
+            grbDadosLocacao.ResumeLayout(false);
+            grbDadosLocacao.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numValorTotal).EndInit();
             ResumeLayout(false);
         }
 
@@ -306,5 +398,12 @@
         private DataGridView dgvItensLocacao;
         private Button btnFechar;
         private Button btnCancelar;
+        private GroupBox grbDadosLocacao;
+        private DateTimePicker dateDataLocacao;
+        private Label label6;
+        private NumericUpDown numValorTotal;
+        private Label label9;
+        private TextBox txtStatus;
+        private Label label8;
     }
 }

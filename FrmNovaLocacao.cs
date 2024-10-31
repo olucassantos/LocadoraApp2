@@ -42,6 +42,10 @@ namespace LocadoraApp2
             mtxtCpf.Text = LocacaoAtual.Cpf;
             mtxtTelefone.Text = LocacaoAtual.Telefone;
 
+            dateDataLocacao.Value = LocacaoAtual.Data;
+            numValorTotal.Value = LocacaoAtual.ValorTotal;
+            txtStatus.Text = LocacaoAtual.Status;
+
             CarregaDadosItensLocacao();
         }
 
@@ -71,6 +75,9 @@ namespace LocadoraApp2
             btnCancelar.Visible = !status;
             // Oculta o botão de fechar locação
             btnFechar.Visible = !status;
+
+            // Mostra o groupBox de dados
+            grbDadosLocacao.Visible = status;
 
             // Desabilita o DataGridView dos itens
             dgvItensLocacao.ReadOnly = status;
@@ -194,13 +201,13 @@ namespace LocadoraApp2
             dgvItensLocacao.Columns["Valor"].DisplayIndex = 4;
             dgvItensLocacao.Columns["Quantidade"].DisplayIndex = 5;
             dgvItensLocacao.Columns["ValorTotal"].DisplayIndex = 6;
+            dgvItensLocacao.Columns["Status"].DisplayIndex = 7;
 
             // Oculta os campos desnecessários
             dgvItensLocacao.Columns["MidiaId"].Visible = false;
             dgvItensLocacao.Columns["Midia"].Visible = false;
             dgvItensLocacao.Columns["Locacao"].Visible = false;
             dgvItensLocacao.Columns["LocacaoId"].Visible = false;
-            dgvItensLocacao.Columns["Status"].Visible = false;
 
             // Redimensiona as colunas
             dgvItensLocacao.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -294,6 +301,35 @@ namespace LocadoraApp2
             }
 
             return true;
+        }
+
+        private void dgvItensLocacao_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            // Verifica se existe uma celula selecionada
+            if (e.RowIndex >= 0)
+            {
+                // Pega qual linha foi clicada
+                DataGridViewRow linha = dgvItensLocacao.Rows[e.RowIndex];
+
+                // Pega o código da linha selecionada
+                int ItemId = (int) linha.Cells["ItemId"].Value;
+
+                using (var contexto = new LocadoraAppDbContext())
+                {
+                    // Busca o item no banco de dados
+                    var Item = contexto
+                                .Itens
+                                .Include(i => i.Midia)
+                                .FirstOrDefault(i => i.ItemId == ItemId);
+
+                    if (Item != null)
+                    {
+                        // Chama o formulário de mudar status passando o item buscado
+                        FrmMudaStatus frmMudaStatus = new FrmMudaStatus(Item);
+                        frmMudaStatus.ShowDialog();
+                    }
+                }
+            }
         }
     }
 }
